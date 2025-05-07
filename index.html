@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Научитесь зарабатывать на Telegram-ботах с ИИ! Скачайте бесплатный курс и узнайте, как создать бота без навыков программирования. Доход от 200 000+ руб/мес!">
+    <meta name="keywords" content="Telegram-боты, заработок на Telegram, ИИ, нейросети, бесплатный курс, платный курс">
+    <meta name="author" content="Школа Телеграм Ботов">
+    <title>Зарабатывай на Telegram-ботах с ИИ | Школа Телеграм Ботов</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: #333;
+            background-color: #1C2526;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #DAA520, #1C2526);
+            color: #FFFFFF;
+            text-align: center;
+            padding: 100px 30px;
+            position: relative;
+            overflow: hidden;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        header p {
+            font-size: 1.5rem;
+        }
+
+        .timer-section {
+            text-align: center;
+            padding: 60px 0;
+            background: #1C2526;
+        }
+
+        .timer {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #FFD700;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .timer-text {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            margin-bottom: 30px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 30px 70px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            text-decoration: none;
+            color: #1C2526;
+            background: linear-gradient(135deg, #FFD700, #DAA520);
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+            animation: pulse 1.5s infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.8);
+        }
+
+        .download-count {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.2rem;
+            color: #FFFFFF;
+            margin-top: 20px;
+        }
+
+        .download-count span {
+            color: #FFD700;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 50px rgba(255, 215, 0, 1);
+            }
+            100% {
+                box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+                background: linear-gradient(90deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.3), rgba(255, 215, 0, 0.1));
+            }
+            50% {
+                text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+                background: linear-gradient(90deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.5), rgba(255, 215, 0, 0.2));
+            }
+            100% {
+                text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+                background: linear-gradient(90deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.3), rgba(255, 215, 0, 0.1));
+            }
+        }
+
+        .divider {
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #FFD700, transparent);
+            margin: 30px auto;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .section {
+            padding: 50px 30px;
+            background-color: #F9F9F9;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 25px;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+        }
+
+        .section p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .section ul {
+            list-style-type: disc;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .section ul li {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.3), rgba(255, 215, 0, 0.1));
+            padding: 2px 8px;
+            border-radius: 5px;
+            animation: glow 2s infinite;
+        }
+
+        .chart-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .chart-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .chart-container text {
+            font-family: 'Raleway', sans-serif;
+            fill: #333;
+            font-size: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 25px 50px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: #1C2526;
+            background: linear-gradient(135deg, #FFD700, #DAA520);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            animation: pulse 1.5s infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 15px 0;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.8);
+        }
+
+        .buttons {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #FFD700;
+            color: #1C2526;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            transition: opacity 0.3s ease;
+        }
+
+        .scroll-top-btn:hover {
+            background: #E5C07B;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: #1C2526;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            color: #FFFFFF;
+        }
+
+        .popup-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        .popup-content p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .popup-content .btn {
+            margin: 0 auto;
+        }
+
+        .close-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #E5C07B;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background: #FFD700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #1C2526;
+            color: #FFFFFF;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.2rem;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            .section p, .section ul li {
+                font-size: 1rem;
+            }
+
+            .btn, .download-btn {
+                font-size: 1.2rem;
+                padding: 20px 40px;
+            }
+
+            .highlight {
+                font-size: 1em;
+            }
+
+            .timer {
+                font-size: 2.5rem;
+            }
+
+            .timer-text {
+                font-size: 1.2rem;
+            }
+
+            .download-count {
+                font-size: 1rem;
+            }
+
+            .popup-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .popup-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Зарабатывай на Telegram-ботах с ИИ</h1>
+            <p>Доход <span class="highlight">200 000+ рублей в месяц</span> — начни прямо сейчас!</p>
+        </div>
+    </header>
+
+    <section class="timer-section">
+        <div class="container">
+            <div class="timer" id="timer"><span id="time">05:00</span></div>
+            <div class="timer-text">осталось времени, чтобы забрать бесплатный курс</div>
+            <a href="Besplatnyj_kurs_Kak_sozdat_i_prodat_Telegram_botov_s_pomoshyu_II.pdf" class="download-btn" id="downloadBtn" download>Забрать бесплатный курс</a>
+            <div class="download-count">Уже скачали: <span id="downloadCount"></span> человек</div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section">
+        <div class="container">
+            <h2>Почему это тренд 2025 года?</h2>
+            <p>Ниша Telegram-ботов с ИИ стремительно растёт:</p>
+            <ul>
+                <li><span class="highlight">Более 900 миллионов пользователей Telegram</span> — огромный рынок для твоего старта.</li>
+                <li>ИИ меняет правила игры: создавай ботов <span class="highlight">без навыков программирования</span>.</li>
+                <li>Те, кто начнёт сегодня, будут впереди конкурентов завтра.</li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section chart-section">
+        <div class="container">
+            <h2>Рост интереса к нейросетям</h2>
+            <p>Нейросети становятся всё популярнее — это твой шанс войти в тренд!</p>
+            <div class="chart-container">
+                <svg width="600" height="300" viewBox="0 0 600 300">
+                    <rect width="600" height="300" fill="#F9F9F9" />
+                    <line x1="50" y1="250" x2="550" y2="250" stroke="#333" stroke-width="2" />
+                    <line x1="50" y1="50" x2="50" y2="250" stroke="#333" stroke-width="2" />
+                    <polyline id="growthLine" points="50,250 150,250 250,250 350,250 450,250 550,250" fill="none" stroke="#FFD700" stroke-width="4" />
+                    <circle id="point1" cx="50" cy="250" r="5" fill="#FFD700" opacity="0" />
+                    <circle id="point2" cx="150" cy="200" r="5" fill="#FFD700" opacity="0" />
+                    <circle id="point3" cx="250" cy="150" r="5" fill="#FFD700" opacity="0" />
+                    <circle id="point4" cx="350" cy="100" r="5" fill="#FFD700" opacity="0" />
+                    <circle id="point5" cx="450" cy="70" r="5" fill="#FFD700" opacity="0" />
+                    <circle id="point6" cx="550" cy="50" r="5" fill="#FFD700" opacity="0" />
+                    <text x="50" y="270">2020</text>
+                    <text x="150" y="270">2021</text>
+                    <text x="250" y="270">2022</text>
+                    <text x="350" y="270">2023</text>
+                    <text x="450" y="270">2024</text>
+                    <text x="550" y="270">2025</text>
+                    <text x="20" y="250">0%</text>
+                    <text x="20" y="200">20%</text>
+                    <text x="20" y="150">40%</text>
+                    <text x="20" y="100">60%</text>
+                    <text x="20" y="50">80%</text>
+                </svg>
+            </div>
+            <p>С 2020 года интерес к нейросетям вырос в разы — и это только начало!</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section">
+        <div class="container">
+            <h2>Что ты узнаешь из <span class="highlight">бесплатного курса</span>?</h2>
+            <p>Бесплатный курс — это твой первый шаг к созданию Telegram-ботов с ИИ:</p>
+            <ul>
+                <li>Почему Telegram-боты — это <span class="highlight">золотая жила</span> в 2025 году.</li>
+                <li>Как ИИ помогает создавать боты быстро и без сложностей.</li>
+                <li>Первые шаги для монетизации: как превратить бота в источник дохода.</li>
+                <li>Советы по продвижению, чтобы твой бот привлёк первых пользователей.</li>
+            </ul>
+            <p>Это только начало — скачай <span class="highlight">бесплатный курс</span>, чтобы узнать больше!</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section">
+        <div class="container">
+            <h2>Хочешь большего дохода?</h2>
+            <p>Полный курс "Как зарабатывать на Telegram-ботах с ИИ" даст тебе:</p>
+            <ul>
+                <li>План для дохода <span class="highlight">200 000+ руб/мес</span>.</li>
+                <li>Готовые шаблоны кода.</li>
+                <li>Реальные кейсы и секреты успеха.</li>
+            </ul>
+            <p><span class="highlight">Всего за 1799 рублей</span> — окупится в первый месяц!</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="buttons">
+        <div class="container">
+            <a href="https://t.me/AiBotSchool" class="btn" id="telegramBtn" target="_blank">Купить полный курс в Telegram</a><br>
+            <a href="#" class="btn" id="sbpBtn">Купить полный курс по СБП</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Школа Телеграм Ботов. Все права защищены.</p>
+    </footer>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h2>Не уходите!</h2>
+            <p>У вас осталось <span id="popupTime">05:00</span> на скачивание бесплатного курса!</p>
+            <a href="Besplatnyj_kurs_Kak_sozdat_i_prodat_Telegram_botov_s_pomoshyu_II.pdf" class="btn" download>Скачать сейчас</a>
+            <button id="closePopup" class="close-btn">Закрыть</button>
+        </div>
+    </div>
+
+    <button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+
+    <script>
+        // Плавное появление секций
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Параллакс-эффект для заголовка
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const scrollPosition = window.scrollY;
+            header.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+        });
+
+        // Логика таймера
+        const timerElement = document.getElementById('time');
+        const downloadBtn = document.getElementById('downloadBtn');
+        let timeLeft = 300;
+        let timerId = null;
+        let timerStarted = false;
+        let hasDownloaded = false;
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function updateTimer() {
+            if (timeLeft <= 0) {
+                clearInterval(timerId);
+                downloadBtn.style.display = 'none';
+                document.getElementById('timer').style.display = 'none';
+                document.querySelector('.timer-text').style.display = 'none';
+                document.querySelector('.download-count').style.display = 'none';
+                return;
+            }
+            timerElement.textContent = formatTime(timeLeft);
+            if (timeLeft === 60 && !hasDownloaded) {
+                popup.style.display = 'flex';
+                popupTime.textContent = formatTime(timeLeft);
+            }
+            timeLeft--;
+        }
+
+        downloadBtn.addEventListener('click', () => {
+            clearInterval(timerId);
+            document.getElementById('timer').style.display = 'none';
+            document.querySelector('.timer-text').style.display = 'none';
+            document.querySelector('.download-count').style.display = 'none';
+            hasDownloaded = true;
+        });
+
+        const timerSectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !timerStarted) {
+                    timerStarted = true;
+                    timerElement.textContent = formatTime(timeLeft);
+                    timerId = setInterval(updateTimer, 1000);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        timerSectionObserver.observe(document.querySelector('.timer-section'));
+
+        // Счётчик пользователей
+        const downloadCountElement = document.getElementById('downloadCount');
+        let downloadCount = Math.floor(Math.random() * (1295 - 1216 + 1)) + 1216;
+        downloadCountElement.textContent = downloadCount;
+
+        setInterval(() => {
+            const increment = Math.floor(Math.random() * 4) + 1;
+            downloadCount += increment;
+            downloadCountElement.textContent = downloadCount;
+        }, 10000);
+
+        // Анимация графика
+        const chartSection = document.querySelector('.chart-section');
+        const growthLine = document.getElementById('growthLine');
+        const points = [
+            document.getElementById('point1'),
+            document.getElementById('point2'),
+            document.getElementById('point3'),
+            document.getElementById('point4'),
+            document.getElementById('point5'),
+            document.getElementById('point6')
+        ];
+
+        let hasAnimated = false;
+        const chartObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    hasAnimated = true;
+                    const animateLine = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+                    animateLine.setAttribute('attributeName', 'points');
+                    animateLine.setAttribute('from', '50,250 150,250 250,250 350,250 450,250 550,250');
+                    animateLine.setAttribute('to', '50,250 150,200 250,150 350,100 450,70 550,50');
+                    animateLine.setAttribute('dur', '2s');
+                    animateLine.setAttribute('fill', 'freeze');
+                    growthLine.appendChild(animateLine);
+
+                    const animateWidth = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+                    animateWidth.setAttribute('attributeName', 'stroke-width');
+                    animateWidth.setAttribute('from', '4');
+                    animateWidth.setAttribute('to', '6');
+                    animateWidth.setAttribute('dur', '2s');
+                    animateWidth.setAttribute('fill', 'freeze');
+                    growthLine.appendChild(animateWidth);
+
+                    points.forEach((point, index) => {
+                        const animatePoint = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+                        animatePoint.setAttribute('attributeName', 'opacity');
+                        animatePoint.setAttribute('from', '0');
+                        animatePoint.setAttribute('to', '1');
+                        animatePoint.setAttribute('dur', '0.5s');
+                        animatePoint.setAttribute('begin', `${index * 0.4}s`);
+                        animatePoint.setAttribute('fill', 'freeze');
+                        point.appendChild(animatePoint);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        chartObserver.observe(chartSection);
+
+        // Обработка кнопки Telegram
+        const telegramBtn = document.getElementById('telegramBtn');
+        telegramBtn.addEventListener('click', (event) => {
+            console.log('Переход в Telegram-канал:', telegramBtn.href);
+            // Разрешаем переход без всплывающего окна
+            hasDownloaded = true; // Отключаем popup при переходе
+        });
+
+        // Всплывающее окно
+        const popup = document.getElementById('popup');
+        const popupTime = document.getElementById('popupTime');
+        const closePopupBtn = document.getElementById('closePopup');
+
+        closePopupBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+
+        window.addEventListener('beforeunload', (event) => {
+            if (timeLeft > 0 && !hasDownloaded) {
+                popup.style.display = 'flex';
+                popupTime.textContent = formatTime(timeLeft);
+                event.preventDefault();
+                event.returnValue = '';
+            }
+        });
+
+        // Кнопка "Наверх"
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.style.display = 'block';
+            } else {
+                scrollTopBtn.style.display = 'none';
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
